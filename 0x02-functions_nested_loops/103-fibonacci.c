@@ -12,18 +12,16 @@ int main(void)
 	x = 1;
 	y = 2;
 	sum = 0;
-
 	for (a = 1; a <= 33; ++a)
 	{
 		if (x < 4000000 && (x % 2) == 0)
 		{
 			sum = sum + x;
 		}
-		new = j + k;
-		x = k;
+		new = x + y;
+		x = y;
 		y = new;
 	}
-
 	printf("%lu\n", sum);
 	return (0);
 }
