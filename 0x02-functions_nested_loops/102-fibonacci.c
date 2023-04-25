@@ -21,7 +21,7 @@ int main(void)
 		}
 		follow = b + c;
 		b = c;
-		c = next;
+		c = follow;
 	}
 	return (0);
 }
