@@ -1,8 +1,8 @@
 #include "main.h"
 /**
- * main - Check if number is positive, negative or zero
- * 0 : the number to check
- * Return: 0
+ * positive_or_negative - Check if number is positive, negative or zero
+ * @i : the number to check
+ * Return: 0 on success
  */
 void positive_or_negative(int i)
 {
