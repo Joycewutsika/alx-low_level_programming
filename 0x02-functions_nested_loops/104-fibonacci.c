@@ -1,49 +1,61 @@
 #include <stdio.h>
 
 /**
- *  main - Prints the first 98 Fibonacci numbers
- *  Return: Always 0.
+ * numLength - returns the lenth of string
+ * Return: number of digits
  */
+int numLength(int num)
+{
+	int length = 0;
+
+	if (!num)
+	{
+		return (1);
+	}
+
+	while (num)
+	{
+		num = num / 10;
+		length += 1;
+	}
+
+	return (length);
+}
+/**
+ * main - prints the first 98 fibonaci sequences
+ * Return: 0
+ */
+
 int main(void)
 {
-	int c, tmp, tmp2;
-	long int q1, q2, fq, fq2, q11, q22;
+	unsigned long f1 = 1, f2 = 2, tmp, mx = 100000000, f1o = 0, f2o = 0, tmpo = 0;
+	short int i = 1, initial0s;
 
-	q1 = 1;
-	q2 = 2;
-	tmp =  tmp2 = 1;
-	printf("%ld, %ld", q1, q2);
-	for (c = 0; c < 96; c++)
+	while (i <= 98)
 	{
-		if (tmp)
+		if (f1o > 0)
+			printf("%lu", f1o);
+		initial0s = numLength(mx) - 1 - numLength(f1);
+		while (f1o > 0 && initial0s > 0)
 		{
-			fq = q1 + q2;
-			printf(", %ld", fq);
-			q1 = q2;
-			q2 = fq;
+			printf("%i", 0);
+			initial0s--;
 		}
+		printf("%lu", f1);
+
+		tmp = (f1 + f2) % mx;
+		tmpo = f1o + f2o + (f1 + f2) / mx;
+		f1 = f2;
+		f1o = f2o;
+		f2 = tmp;
+		f2o = tmpo;
+
+		if (i != 98)
+			printf(", ");
 		else
-		{
-			if (tmp2)
-			{
-				q11 = q1 % 1000000000;
-				q22 = q2 % 1000000000;
-				q1 = q1 / 1000000000;
-				q2 = q2 / 1000000000;
-				tmp2 = 0;
-			}
-			fq2 = (q11 + q22);
-			fq = q1 + q2 + (fq2 / 1000000000);
-			printf(", %ld", fq);
-			printf("%ld", fq2 % 1000000000);
-			q1 = q2;
-			q11 = q22;
-			q2 = fq;
-			q22 = (fq2 % 1000000000);
-		}
-		if (((q1 + q2) < 0) && tmp == 1)
-			tmp = 0;
+			printf("\n");
+		i++;
 	}
-	printf("\n");
 	return (0);
 }
+
