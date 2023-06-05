@@ -5,7 +5,7 @@
   *@head: pointer
   *@index: index
   *
-  *Returns: 1 (success), -1 (fail)
+  *Return: 1 (success), -1 (fail)
   */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
