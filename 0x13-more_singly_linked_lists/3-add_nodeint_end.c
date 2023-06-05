@@ -3,17 +3,17 @@
 /**
  *add_nodeint_end - adds a node at the end
  *@head: pointer
- *@n: data used
+ *@n: data to use
  *
  *Return: pointer, otherwise NULL at failure
  */
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
 	listint_t *new_node;
-	listint_t *now = *head;
+	listint_t *temp = *head;
 
 	new_node = malloc(sizeof(listint_t));
-	if (new_node)
+	if (!new_node)
 		return (NULL);
 
 	new_node->n = n;
@@ -25,10 +25,10 @@ listint_t *add_nodeint_end(listint_t **head, const int n)
 		return (new_node);
 	}
 
-	while (now->next)
-		now = now->next;
+	while (temp->next)
+		temp = temp->next;
 
-	now->next = new_node;
+	temp->next = new_node;
 
 	return (new_node);
 }

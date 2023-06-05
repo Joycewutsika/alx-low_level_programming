@@ -1,40 +1,38 @@
 #include "lists.h"
 
 /**
-  *free_listint_safe - frees a linked list
-  *@h: pointer
-  *
-  *Return: number
-  */
+ *free_listint_safe - frees a linked list
+ *@h: pointer
+ *
+ *Return: number
+ */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *jay;
-	int less;
-	size_t length = 0;
+	size_t len = 0;
+	listint_t *current, *temp;
 
 	if (!h || !*h)
 		return (0);
 
 	while (*h)
 	{
-		less = *h - (*h)->next;
-		if (less > 0)
+		current = *h;
+		temp = current->next;
+
+		if ((void *)current <= (void *)temp)
 		{
-			jay = (*h)->next;
-			free(*h);
-			*h = jay;
-			length++;
+			free(current);
+			*h = temp;
+			len++;
 		}
 		else
 		{
-			free(*h);
+			free(current);
 			*h = NULL;
-			length++;
+			len++;
 			break;
 		}
 	}
 
-	*h = NULL;
-
-	return (length);
+	return (len);
 }
