@@ -12,13 +12,13 @@ size_t looped_listint_len(const listint_t *head);
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t jay, index =0;
+	size_t nodes, index = 0;
 
-	jay = looped_listint_len(head);
+	nodes = looped_listint_len(head);
 
-	if (jay == 0)
+	if (nodes == 0)
 	{
-		for (; head != NULL; jay++)
+		for (; head != NULL; nodes++)
 		{
 			printf("[%p] %d\n", (void *)head, head->n);
 			head = head->next;
@@ -26,14 +26,15 @@ size_t print_listint_safe(const listint_t *head)
 	}
 	else
 	{
-		for (index = 0; index < jay; index++)
+		for (index = 0; index < nodes; index++)
 		{
 			printf("[%p] %d\n", (void *)head, head->n);
 			head = head->next;
 		}
 		printf("-> [%p] %d\n", (void *)head, head->n);
 	}
-	return (jay);
+
+	return (nodes);
 }
 
 /**
@@ -44,7 +45,7 @@ size_t print_listint_safe(const listint_t *head)
   */
 size_t looped_listint_len(const listint_t *head)
 {
-	size_t jay;
+	size_t nodes;
 	const listint_t *up, *down;
 
 	if (head == NULL || head->next == NULL)
@@ -57,22 +58,21 @@ size_t looped_listint_len(const listint_t *head)
 	{
 		if (up == down)
 		{
-			up == head;
+			up = head;
 			while (up != down)
 			{
-				jay++;
+				nodes++;
 				up = up->next;
 				down = down->next;
 			}
 
 			up = up->next;
-
 			while (up != down)
 			{
-				jay++;
+				nodes++;
 				up = up->next;
 			}
-			return (jay);
+			return (nodes);
 		}
 
 		up = up->next;
